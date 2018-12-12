@@ -1,4 +1,4 @@
-"""Microblog URL Configuration
+"""littleblog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,12 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts import views
 
 urlpatterns = [
-    # home page
-    path('', views.index, name='home'),
-
-    # core paths
     path('admin/', admin.site.urls),
 ]
