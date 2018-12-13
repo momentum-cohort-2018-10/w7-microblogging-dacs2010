@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd party apps
+    'rest_framework',
+
     # my apps
     'core',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -135,4 +139,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# custom user model
 AUTH_USER_MODEL = 'core.User'
