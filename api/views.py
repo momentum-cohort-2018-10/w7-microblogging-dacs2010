@@ -8,7 +8,7 @@ from api.serializers import PostSerializer
 @api_view(['GET'])
 def post_list(request):
     '''
-    a list o f all the posts
+    a list of all the posts
     '''
     if request.method == 'GET':
         posts = Post.objects.all()

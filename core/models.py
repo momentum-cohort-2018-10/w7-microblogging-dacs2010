@@ -5,24 +5,28 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     '''
     like
-    follow
-    followed_by
     '''
-    pass
+    followed_users = models.ManyToManyField(
+        to='User',
+        through='Follow',
+        through_fields=('follower', 'followee'),
+        related_name="followers",
+     )
 
 
 class Post(models.Model):
-    '''
-    likes
-    comments
-    '''
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
     body = models.CharField(max_length=255)
 
 
+class Follow(models.Model):
+    follower = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='followed_by')
 
+    followee = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='following')
+
+    date_created = models.DateTimeField(auto_now_add=True)
 
 
 # class Comment(models.Model):
@@ -42,10 +46,3 @@ class Post(models.Model):
 # '''
 
 
-# class Follow(models.Model):
-# '''
-# Follow
-#     following
-#     leading
-# '''
-# pass
