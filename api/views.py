@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework import generics
 from core.models import Post
 from api.serializers import PostSerializer
 
@@ -15,3 +16,10 @@ def post_list(request):
         serializer = PostSerializer(posts, many=True, context={'request': request})
         return Response(serializer.data)
         
+
+class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = PostSerializer
+    lookup_field = 'pk'
+
+    def get_queryset(self):
+        return self.request.user.posts

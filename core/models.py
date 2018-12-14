@@ -46,6 +46,6 @@ class Post(models.Model):
 # '''
 # Follow
 #     following
-#     followed_by
+#     leading
 # '''
 # pass
