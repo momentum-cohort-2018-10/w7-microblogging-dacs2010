@@ -7,4 +7,5 @@
     "python.linting.pylintArgs": [
         "--load-plugins=pylint_django"
     ],
+    "telemetry.enableCrashReporter": false,
 }

@@ -9,8 +9,6 @@ class UserSerialzer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    # posted_by = serializers.StringRelatedField(many=True)
-    # user = UserSerialzer(many=True, read_only=True, required=False)
     user = serializers.SlugRelatedField(slug_field="username", read_only=True)
 
     class Meta:
