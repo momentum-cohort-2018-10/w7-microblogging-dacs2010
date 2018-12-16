@@ -21,7 +21,7 @@ from api import views as core_views
 urlpatterns = [
     # api apps urls
     path('api/', include('api.urls')),
-    
+
     # core url
     path('admin/', admin.site.urls),
 ]

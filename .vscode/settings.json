@@ -1,5 +1,7 @@
 {
-    "python.pythonPath": "/Users/cornbuster/.local/share/virtualenvs/w7-microblogging-dacs2010-pO6ITYRk/bin/python",
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "python.pythonPath": "/Users/cornbuster/.local/share/virtualenvs/w4-freeshelf-dacs2010-De_D4yDU/bin/python",
     "html.format.enable": true,
     "editor.minimap.enabled": false,
     "breadcrumbs.enabled": true,
@@ -7,5 +9,4 @@
     "python.linting.pylintArgs": [
         "--load-plugins=pylint_django"
     ],
-    "telemetry.enableCrashReporter": false,
 }

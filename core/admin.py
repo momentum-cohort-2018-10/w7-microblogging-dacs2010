@@ -1,19 +1,30 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
 from core.models import Post, User, Comment
 # Register your models here.
 
 class UserAdmin(admin.ModelAdmin):
-    fields = ('username', 'email', 'is_active',)
+    '''
+    user admin
+    '''
+    fields = ('username', 'email', 'is_active')
+    search_fields = ('user',)
+
+
+class CommentAdmin(admin.ModelAdmin):
+    '''
+    comment admin
+    '''
+    model = Comment
+    fields = ('user', 'body', 'post')
+    extra = 1
 
 
 class PostAdmin(admin.ModelAdmin):
+    '''
+    post admin
+    '''
     model = Post
-    fields = ('title', 'body', 'user')
-
-class CommentAdmin(admin.ModelAdmin):
-    model = Comment
-    fields = ('user', 'body', 'post')
+    list_display = ['title', 'body', 'user']
 
 
 admin.site.register(User, UserAdmin)

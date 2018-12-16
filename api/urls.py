@@ -17,8 +17,24 @@ from django.urls import path
 from api import views as api_views
 
 urlpatterns = [
-    path('posts/', api_views.post_list, name='api_post_list'),
-    path('posts/<int:pk>', api_views.PostRetrieveUpdateDestroyView.as_view(), name='api_post'),
-    path('users/',  api_views.UserListView.as_view(), name='api_user_list')
+    path(
+        'posts/',
+        api_views.post_list,
+        name='api_post_list'
+    ),
+    path(
+        'posts/<int:pk>',
+        api_views.PostRetrieveUpdateDestroyView.as_view(),
+        name='api_post'
+    ),
+    path(
+        'users/',
+        api_views.UserListView.as_view(),
+        name='api_user_list'
+    ),
+    path(
+        'comments/',
+        api_views.CommentsListView.as_view(),
+        name='api_comments_list'
+    )
 ]
-

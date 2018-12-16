@@ -28,9 +28,12 @@ class Post(models.Model):
         on_delete=models.CASCADE, 
         related_name='posted_by'
     )
-    title = models.CharField(max_length=280)
+    title = models.CharField(max_length=100)
     date_created = models.DateTimeField(auto_now_add=True)
-    body = models.CharField(max_length=255)
+    body = models.CharField(max_length=280)
+
+    def __str__(self):
+        return self.title
 
 
 class Follow(models.Model):
@@ -40,8 +43,8 @@ class Follow(models.Model):
         related_name='followed_by'
     )
     followee = models.ForeignKey(
-        to=User, 
-        on_delete=models.CASCADE, 
+        to=User,
+        on_delete=models.CASCADE,
         related_name='following'
     )
     date_created = models.DateTimeField(auto_now_add=True)

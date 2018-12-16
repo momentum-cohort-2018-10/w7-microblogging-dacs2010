@@ -1,11 +1,19 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import generics
-from core.models import Post, User
-from api.serializers import PostSerializer, UserSerialzer
+from core.models import Post, User, Comment
+from api.serializers import PostSerializer, UserSerialzer, CommentSerializer
 
 
 # Create your views here.
+class CommentsListView(generics.ListAPIView):
+    '''
+    comments list
+    '''
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
+
+
 @api_view(['GET'])
 def post_list(request):
     '''
@@ -14,9 +22,13 @@ def post_list(request):
     if request.method == 'GET':
         posts = Post.objects.all()
         lookup_field = 'pk'
-        serializer = PostSerializer(posts, many=True, context={'request': request})
+        serializer = PostSerializer(
+            posts,
+            many=True,
+            context={'request': request}
+            )
         return Response(serializer.data)
-        
+
 
 class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     '''
@@ -25,7 +37,7 @@ class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     lookup_field = 'pk'
     queryset = Post.objects.all()
-   
+
     # def get_queryset(self):
     #     '''
     #     returns post for authenticated user
