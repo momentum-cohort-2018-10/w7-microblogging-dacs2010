@@ -13,9 +13,11 @@ class User(AbstractUser):
         related_name="followers",
      )
 
+    def __str__(self):
+        return self.username
 
 class Post(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='posted_by')
     title = models.CharField(max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
     body = models.CharField(max_length=255)
