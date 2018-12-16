@@ -14,4 +14,4 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         lookup_field = 'pk'
-        fields = ('user', 'date_created', 'body',)
+        fields = ('user', 'date_created', 'title', 'body',)
