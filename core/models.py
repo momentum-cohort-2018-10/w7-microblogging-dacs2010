@@ -16,6 +16,9 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+    # def __unicode__(self)
+
+
 class Post(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='posted_by')
     title = models.CharField(max_length=255)

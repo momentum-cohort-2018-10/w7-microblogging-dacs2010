@@ -1,4 +1,4 @@
 # to do list
 
 * change user in api/posts
-* create user list api view
+* create user list api - done
